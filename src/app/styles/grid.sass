@@ -18,3 +18,15 @@
     .col_#{$i}
         min-width: (100% /12) * $i
         max-width: (100% /12) * $i
+
+.row_wrap
+    container-type: inline-size
+
+
+@container (max-width: 747px)
+    .row
+        flex-direction: column !important
+        flex-wrap: nowrap
+
+
+        
