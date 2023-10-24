@@ -2,6 +2,7 @@ import Image from "next/image";
 import style from "./style/card.module.sass";
 import Button from "./Button";
 import ConditionalRender from "./conditonal-render";
+import getCategoryColor from "../helper/getCategory-color";
 
 const Card = ( props ) => {
   console.log(props)
@@ -15,7 +16,7 @@ const Card = ( props ) => {
         </div>
         <div className={style.content}>
           <ConditionalRender condition={props.label}>
-            <div className={`${style.card_label}  c-orange h6`}>
+            <div className={`${style.card_label}  c-${getCategoryColor(props.label)} h6`}>
               {props.label}
             </div>
           </ConditionalRender>
