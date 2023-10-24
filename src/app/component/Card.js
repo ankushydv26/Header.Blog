@@ -1,8 +1,10 @@
 import Image from "next/image";
 import style from "./style/card.module.sass";
 import Button from "./Button";
+import ConditionalRender from "./conditonal-render";
 
-const Card = () => {
+const Card = ( props ) => {
+  console.log(props)
   return (
     <div className={style.card_wrap}>
       <div className={style.card}>
@@ -12,18 +14,30 @@ const Card = () => {
           </div>
         </div>
         <div className={style.content}>
-          <div className={`${style.card_label}  c-orange h6`}>Product View</div>
-          <div className={`${style.card_title} h3`}>
-            A beautiful sunset over the ocean{" "}
-          </div>
-          <div className={style.card_summary}>
-            <p>
-              {" "}
+          <ConditionalRender condition={props.label}>
+            <div className={`${style.card_label}  c-orange h6`}>
+              {props.label}
+            </div>
+          </ConditionalRender>
+          <ConditionalRender condition={props.title}>
+            <div className={`${style.card_title} h3`}>{props.title}</div>
+          </ConditionalRender>
+
+          <ConditionalRender condition={props.description}>
+            <div className={style.card_summary}>
+              <p>
+                {props.description}
+                {/* {" "}
+
               A beautiful sunset over the ocean and view is faboulas and every
-              surface is sparkling the light Hey helo why thi kolevari d{" "}
-            </p>
-          </div>
-          <Button href="dk">Read more</Button>
+
+              surface is sparkling the light Hey helo why thi kolevari d{" "} */}
+              </p>
+            </div>
+          </ConditionalRender>
+          <ConditionalRender condition={props.href}>
+            <Button href="dk">{props.href}</Button>
+          </ConditionalRender>
         </div>
       </div>
     </div>
