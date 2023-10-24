@@ -8,11 +8,10 @@ export default function Home() {
         description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, explicabo."
         href={ "Read More"}
       />
-      {/* <div className="row_wrap"> */}
       <div className="row">
         <div className="col col-4 min-mw-100">
           <Card
-            label="Product Review"
+            label="Opinions"
             title="Best Selling Products in the Market"
             description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, explicabo."
             href={ "Read More"}
@@ -20,7 +19,7 @@ export default function Home() {
         </div>
         <div className="col col-4 min-mw-100">
           <Card
-            label="Product Review"
+            label="Travel Guides"
             title="Best Selling Products in the Market"
             description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, explicabo."
             href={ "Read More"}
@@ -28,13 +27,12 @@ export default function Home() {
         </div>
         <div className="col col-4 min-mw-100">
           <Card
-            label="Product Review"
+            label="Opinions"
             title="Best Selling Products in the Market"
             description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, explicabo."
             href={ "Read More"}
           />
         </div>
-        {/* </div> */}
       </div>
     </div>
   );
