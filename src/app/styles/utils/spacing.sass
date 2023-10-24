@@ -1,27 +1,19 @@
 //padding 
 
-$paddingTop: (80)
+$paddingTop: (80 , 69)
 
 @each $pt in $paddingTop
     .pt-#{$pt}
         padding-top: #{$pt}px
 
-$paddingBottom: (80)
+$paddingBottom: (80 , 69)
 
 @each $pb in $paddingBottom
     .pt-#{$pb}
         padding-bottom: #{$pb}px
 
-$newPaddingTop: (69)
-  
-@each $pt in $newPaddingTop
-    .pt-#{$pt}
-        padding-top: #{$pt}px
+$marginBottom: (10 , 20  , 40 , 50)
 
-$paddingBottom: (69)
-
-@each $pb in $paddingBottom
-    .pt-#{$pb}
-        padding-bottom: #{$pb}px
-
-                 
+@each $mb in $marginBottom
+    .mb-#{$mb}
+        margin-bottom: #{$mb}px                     
