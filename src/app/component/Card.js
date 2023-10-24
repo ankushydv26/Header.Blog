@@ -5,7 +5,6 @@ import ConditionalRender from "./conditonal-render";
 import getCategoryColor from "../helper/getCategory-color";
 
 const Card = ( props ) => {
-  console.log(props)
   return (
     <div className={style.card_wrap}>
       <div className={style.card}>
