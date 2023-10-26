@@ -10,7 +10,7 @@ const Card = ( props ) => {
       <div className={style.card}>
         <div className={style.image_wraper}>
           <div className={style.image_card}>
-            <Image src="/camera.jpg" alt="ls" width={600} height={400} />
+            <Image src={props.imageUrl} alt="ls" width={600} height={400} />
           </div>
         </div>
         <div className={style.content}>
