@@ -36,7 +36,7 @@ const Card = ( props ) => {
             </div>
           </ConditionalRender>
           <ConditionalRender condition={props.href}>
-            <Button href="dk">{props.href}</Button>
+            <Button href={props.href}>{props.href}</Button>
           </ConditionalRender>
         </div>
       </div>

@@ -1,22 +1,7 @@
 import Card from "./component/Card";
 import { config } from "./config";
+import fetchBlogs from "./helper/fetch-blog";
 
-const fetchBlogs = async (pramas) => {
-  try {
-    const reqOptions = {
-      headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },
-    };
-    const request = await fetch(
-      `${config.api}/api/blogs?populate=*&${pramas}`,
-      reqOptions
-    );
-    const response = await request.json();
-    // console.log("response", response.data);
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
 const Home = async () => {
   const [isFeaturedBlogs, blogs] = await Promise.all([
     fetchBlogs(`filters[isFeatured][$eq]=true`),
