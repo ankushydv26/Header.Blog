@@ -11,24 +11,21 @@ const fetchBlogs = async (pramas) => {
       reqOptions
     );
     const response = await request.json();
-    console.log("response", response, reqOptions);
+    // console.log("response", response.data);
     return response;
   } catch (error) {
     console.log(error);
   }
 };
 const Home = async () => {
-  const [isFeaturedBlogs, blog] = await Promise.all([
+  const [isFeaturedBlogs, blogs] = await Promise.all([
     fetchBlogs(`filters[isFeatured][$eq]=true`),
-    fetchBlogs(`filters[isFeatured][$eq]=false`),
+    fetchBlogs(`filters[isFeatured][$eq]=false`)
   ]);
 
-  console.log("Isfeat" , isFeaturedBlogs.data)
-  
   return (
     <div className="container">
       {isFeaturedBlogs.data.map((featureBlog) => (
-        
         <Card
           key={featureBlog.id}
           label={featureBlog.attributes.Category}
@@ -41,30 +38,18 @@ const Home = async () => {
       ))}
 
       <div className="row">
-        <div className="col col-4 min-mw-100">
-          <Card
-            label="Opinions"
-            title="Best Selling Products in the Market"
-            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, explicabo."
-            href={"Read More"}
-          />
-        </div>
-        <div className="col col-4 min-mw-100">
-          <Card
-            label="Travel Guides"
-            title="Best Selling Products in the Market"
-            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, explicabo."
-            href={"Read More"}
-          />
-        </div>
-        <div className="col col-4 min-mw-100">
-          <Card
-            label="Opinions"
-            title="Best Selling Products in the Market"
-            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, explicabo."
-            href={"Read More"}
-          />
-        </div>
+        {blogs.data.map((blog) => (
+          <div className="col col-4 min-mw-100"  key={blog.id}>
+            <Card
+             label={blog.attributes.Category}
+             title={blog.attributes.Title}
+             imageUrl={`${config.api}${blog.attributes.isFeaturedImage.data.attributes.url}`}
+             imageAlt="imag"
+             description={blog.attributes.Summary}
+             href={blog.attributes.Slug}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
