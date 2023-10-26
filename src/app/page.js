@@ -22,15 +22,24 @@ const Home = async () => {
     fetchBlogs(`filters[isFeatured][$eq]=true`),
     fetchBlogs(`filters[isFeatured][$eq]=false`),
   ]);
-  console.log("This", isFeaturedBlogs.data , `that ${blog.data}`);
+
+  console.log("Isfeat" , isFeaturedBlogs.data)
+  
   return (
     <div className="container">
-      <Card
-        label="Product Review"
-        title="Best Selling Products in the Market"
-        description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, explicabo."
-        href={"Read More"}
-      />
+      {isFeaturedBlogs.data.map((featureBlog) => (
+        
+        <Card
+          key={featureBlog.id}
+          label={featureBlog.attributes.Category}
+          title={featureBlog.attributes.Title}
+          imageUrl={`${config.api}${featureBlog.attributes.isFeaturedImage.data.attributes.url}`}
+          imageAlt="imag"
+          description={featureBlog.attributes.Summary}
+          href={featureBlog.attributes.Slug}
+        />
+      ))}
+
       <div className="row">
         <div className="col col-4 min-mw-100">
           <Card
