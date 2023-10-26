@@ -1,13 +1,13 @@
 import Card from "./component/Card";
 import { config } from "./config";
 
-const fetchBlogs = async () => {
+const fetchBlogs = async (pramas) => {
   try {
     const reqOptions = {
       headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },
     };
     const request = await fetch(
-      `${config.api}/api/blogs?populate=*`,
+      `${config.api}/api/blogs?populate=*&${pramas}`,
       reqOptions
     );
     const response = await request.json();
@@ -18,8 +18,11 @@ const fetchBlogs = async () => {
   }
 };
 const Home = async () => {
-  const blog = await fetchBlogs();
-  console.log("This", blog.data);
+  const [isFeaturedBlogs, blog] = await Promise.all([
+    fetchBlogs(`filters[isFeatured][$eq]=true`),
+    fetchBlogs(`filters[isFeatured][$eq]=false`),
+  ]);
+  console.log("This", isFeaturedBlogs.data , `that ${blog.data}`);
   return (
     <div className="container">
       <Card
