@@ -6,11 +6,9 @@ import {config} from "../config"
 
 const BlogDetails = async(props) => {
   const blogs = await fetchBlogs(`filters[slug][$eq]=${props.params.slug}`)
-console.log("props.params.slug" ,props.params.slug)
   if(blogs.data.length === 0) return null;
-  const blog = blogs.data[0] 
-
-  console.log("blogs-slu" , blog)
+  const filterBlog = blogs.data.filter((blog) => blog.attributes.Slug === props.params.slug ? blog : null)
+  const blog = filterBlog[0] 
   return (
     <>
       <div className="container pb-80">
